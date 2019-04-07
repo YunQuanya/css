@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>立方体</title>
+    <style>
+        .box{
+            height:400px;
+            width:400px;
+            position:relative;
+            left:30%;
+            right:500px;
+            animation:zhuan 6s infinite 1s;
+            transform-style: preserve-3d;
+            transform: rotateY(30deg) rotate(60deg);
+
+        }
+        .top{
+            height:100%;
+            width:100%;
+            position:absolute;
+            display:inline;
+            text-align:center;
+            font-size:80px;
+            line-height:400px;
+            color:red;
+            background:rgba(11,11,11,.6);
+            transform: rotateX(90deg) translateZ(200px);
+        }
+        .xia{
+            height:100%;
+            width:100%;
+            display:inline;
+            position:absolute;
+            text-align:center;
+            line-height:400px;
+            font-size:80px;
+            color:green;
+            background:rgba(222,222,322,.6);
+            transform:rotateX(270deg) translateZ(200px);
+        }
+        .zuo{
+            height:100%;
+            width:100%;
+            position:absolute;
+            display:inline;
+            text-align:center;
+            line-height:400px;
+            font-size:80px;
+            color:blue;
+            background:rgba(255,125,125,.6);
+            transform:rotateY(270deg) translateZ(200px);
+        }
+        .you{
+            height:100%;
+            width:100%;
+            position:absolute;
+            display:inline;
+            text-align:center;
+            line-height:400px;
+            font-size:80px;
+            color:yellowgreen;
+            background:rgba(255,123,664,.6);
+            transform:rotateY(90deg) translateZ(200px);
+        }
+        .qian{
+            height:100%;
+            width:100%;
+            position:absolute;
+            display:inline;
+            text-align:center;
+            line-height:400px;
+            font-size:80px;
+            transform:translateZ(200px);
+            background:rgba(33,66,77,.6);
+            color:yellow;
+        }
+        .hou{
+            height:100%;
+            width:100%;
+            position:absolute;
+            display:inline;
+            text-align:center;
+            font-size:80px;
+            line-height:400px;
+            background:rgba(44,11,22,.6);
+            transform:rotateY(180deg) translateZ(200px);
+        }
+        @keyframes zhuan{
+            0%{
+                transform-style: preserve-3d;
+                transform: rotateY(90deg) rotate(120deg);
+            }
+            50%{
+                transform-style: preserve-3d;
+                transform: rotateY(180deg) rotate(210deg);
+            }
+            100%{
+                transform-style: preserve-3d;
+                transform: rotateY(360deg) rotate(360deg);
+            }
+        }
+    </style>
+<body>
+<div class="box">
+    <span class="top">上</span>
+    <span class="xia">下</span>
+    <span class="zuo">左</span>
+    <span class="you">右</span>
+    <span class="qian">前</span>
+    <span class="hou">后</span>
+</div>
+</body>
+<script>
+
+
+
+
+</script>
+</html>
