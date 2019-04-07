@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0px;
+        padding:0px;
+    }
+    .box{
+        height: 460px;
+        width: 1200px;
+        border: 1px solid red;
+        margin:200px auto;
+        overflow: hidden;
+    }
+    ul {
+        height: 460px;
+        width: 1200px;
+        list-style: none;
+    }
+    .box ul li {
+        float: left;
+        width: 240px;
+
+    }
+    h1{
+        margin-left:50px;
+        margin-top: 100px;
+    }
+
+
+</style>
+<body>
+<h1>奥地利</h1>
+<div class="box">
+
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<script>
+    window.onload = function () {
+        var box = document.getElementsByClassName("box")[0];
+        var liArr = document.getElementsByTagName("li");
+        for(var i = 0; i < liArr.length; i++){
+            liArr[i].innerHTML = "<img src=images/"+(i+1)+".jpg>";
+            liArr[i].onmouseover = function () {
+                for(var j = 0;j < liArr.length; j++){
+//                        liArr[j].style.width = "100px";
+                    animate(liArr[j],{"width":100});
+                }
+//                    this.style.width = "800px";
+                animate(this,{"width":800});
+            }
+        }
+        box.onmouseout = function () {
+            for(var j = 0;j < liArr.length; j++){
+//                    liArr[j].style.width = "240px";
+                animate(liArr[j],{"width":240});
+            }
+        }
+
+
+
+        function animate(ele,json,fn) {
+            clearInterval(ele.timer);
+            ele.timer = setInterval(function () {
+                var bool = true;
+                for(key in json){
+                    var leader = parseInt(getStyle(ele,key)) || 0;
+                    var speed = (json[key] - leader) / 10;
+                    speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                    leader = leader + speed;
+                    ele.style[key] = leader + "px";
+                    if(leader != json[key]){
+                        bool = false;
+                    }
+                }
+                if(bool){
+                    if(Math.abs(json[key] - leader) <= Math.abs(speed)){
+                        clearInterval(ele.timer);
+                        ele.style[key] = json[key] + "px";
+                    }
+                    if(fn){
+                        fn();
+                    }
+                }
+
+                console.log(ele.style.width);
+
+
+            },1);
+        }
+
+        function getStyle(ele,sx) {
+            if(window.getComputedStyle){
+                return window.getComputedStyle(ele,null)[sx];
+            }
+            return ele.currentStyle[sx];
+        }
+    }
+</script>
+</body>
+</html>
