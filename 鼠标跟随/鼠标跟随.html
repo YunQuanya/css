@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    img{
+        position: absolute;
+        padding: 10px 0;
+        border: 1px solid #ccc;
+        cursor: pointer;
+    }
+</style>
+<script src="fun.js"></script>
+<script>
+    window.onload =function () {
+        var img = document.getElementById("img");
+        var targetY = 0;
+        var leaderY = 0;
+        var targetX = 0;
+        var leaderX = 0;
+        var timer = null;
+        document.onmousemove = function (event) {
+            event = event || window.event;
+            var pagey = event.pageY || event.clientY + scroll().top;
+            var pagex = event.pageX || event.clientX + scroll().left;
+            targetY = pagey - img.offsetWidth/2;
+            targetX = pagex - img.offsetHeight/2;
+            //一个方向的跟随
+            clearInterval(timer);
+            timer = setInterval(function () {
+                leaderY = img.offsetTop;
+                var speedy = (targetY - leaderY)/10;
+                speedy = speedy>0 ? Math.ceil(speedy):Math.floor(speedy);
+                leaderY = leaderY + speedy;
+                img.style.top = leaderY + "px";
+                leaderX= img.offsetLeft;
+                var speedx = (targetX - leaderX)/10;
+                speedx = speedx>0 ? Math.ceil(speedx):Math.floor(speedx);
+                leaderX = leaderX + speedx;
+                img.style.left = leaderX + "px";
+                if(Math.abs(targetY - leaderY)<=Math.abs(speedy)&&Math.abs(targetX - leaderX)<=Math.abs(speedx)){
+                    clearInterval(timer);
+                    img.style.top = targetY + "px";
+                    img.style.left = targetX + "px";
+                }
+            },20);
+        }
+    }
+</script>
+<body>
+<img src="img.jpg" width="100" id="img">
+</body>
+</html>
