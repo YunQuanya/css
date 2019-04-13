@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="mycanvas" height="600px" width="600px"></canvas>
+</body>
+<script>
+    var cc=document.getElementById("mycanvas");
+    var cxt=cc.getContext("2d");
+    for(var i=0;i<8;i++){
+        for(var j=0;j<8;j++){
+            cxt.strokeRect(j*25,i*25,25,25);
+            cxt.strokeStyle  = 'rgb(' + Math.floor(255-42.5*i) + ',' +  Math.floor(255-42.5*j) + ',0)';
+            j+=0.5;
+        }
+        i+=0.5;
+    }
+</script>
+</html>
