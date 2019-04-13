@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    div{
+        display: inline-block;
+        width: 120px;
+        height: 100px;
+        margin: 40px 40px;
+    }
+    #image{
+        display: block;
+        background-color: #cccccc;
+        margin-left: 50px;
+        width: 400px;
+        height: 250px;
+    }
+</style>
+<body>
+<script>
+    window.onload = function () {
+        var dArr = document.getElementsByTagName("div");
+        var p = document.getElementsByTagName("p")[0];
+        var img = document.getElementById("image");
+        for(i=0;i<dArr.length;i++){
+            dArr[i].key = i;
+            dArr[i].onclick = function () {
+                var a = this.children[0];
+                img.src = a.href;
+                p.innerHTML = a.title;
+                return false;
+            }
+        }
+    }
+</script>
+<div><a href="1.jpg" title="美女A"><img src="1-small.jpg" alt=""></a></div>
+<div><a href="2.jpg" title="美女B"><img src="2-small.jpg" alt=""></a></div>
+<div><a href="3.jpg" title="美女C"><img src="3-small.jpg" alt=""></a></div>
+<div><a href="4.jpg" title="美女D"><img src="4-small.jpg" alt=""></a></div>
+<img src="" id="image" alt="">
+<p>选择一个图片</p>
+</body>
+</html>
