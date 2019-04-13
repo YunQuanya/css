@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background: red;
+            margin: 200px;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>
+<script stc="fun/scroll.js"></script>
+<script>
+    var box = document.getElementsByClassName("box")[0];
+
+    box.onmousemove=function(event){
+        event=event||wind.event;
+        var pagex = event.pageX||event.clientx+scroll().left;
+        var pagey = event.pageY||event.clientx+scroll().top;
+        var boxOffsetTop=box.offsetTop;
+        var boxOffsetLeft=box.offsetLeft;
+
+
+
+        box.innerHTML="x坐标："+(pagex-boxOffsetLeft);
+        box.innerHTML+="y坐标："+(pagex-boxOffsetTop);
+    }
+
+</script>
