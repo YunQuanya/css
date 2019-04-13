@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    window.onload = function () {
+        var sel = document.getElementById("sel");
+        var btnArr = document.getElementsByTagName("button");
+        var optArr = sel.children;
+        for(i=0;i<optArr.length;i++){
+            if(optArr[i].innerHTML == "鲤鱼"){
+                optArr[i].setAttribute("selected","selected");
+            }
+        }
+        btnArr[0].onclick = function () {
+            for(i=0;i<optArr.length;i++){
+                if(optArr[i].innerHTML == "鲤鱼"){
+                    optArr[i].setAttribute("selected","selected");
+                }
+            }
+        }
+        btnArr[1].onclick = function () {
+            for(i=0;i<optArr.length;i++){
+                if(optArr[i].getAttribute("selected") == "selected");
+                optArr[i].removeAttribute("selected");
+            }
+        }
+    }
+</script>
+<body>
+<button>识别鲤鱼</button>
+<button>去掉鲤鱼</button>
+<br>
+<select name="" id="sel" multiple>
+    <option value="">香蕉</option>
+    <option value="">鲤鱼</option>
+    <option value="">苹果</option>
+    <option value="">柚子</option>
+</select>
+</body>
+</html>
