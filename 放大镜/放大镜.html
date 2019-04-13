@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            width: 350px;
+            height:350px;
+            margin: 100px;
+            border: 1px solid #ccc;
+            position: relative;
+        }
+        .big{
+            width:400px;
+            height: 400px;
+            position: absolute;
+            top:0;
+            left: 360px;
+            border: 1px solid #ccc;
+            overflow: hidden;
+            display: none;
+        }
+        .mask {
+            width: 175px;
+            height: 175px;
+            background: rgba(255,255,0,0.4);
+            position: absolute;
+            top: 0;
+            left:0;
+            cursor: move;
+            display: none;
+        }
+        .small {
+            position: relative;
+        }
+        img {
+            vertical-align: top;
+        }
+
+    </style>
+    <script src="fun.js"></script>
+
+    <script>
+        window.onload = function(){
+            var mask =document.getElementsByClassName("mask")[0];
+            var small =document.getElementsByClassName("small")[0];
+            var box =document.getElementsByClassName("box")[0];
+            var big =document.getElementsByClassName("big")[0];
+            var bigImg =big.firstElementChild||big.firstChild;
+            function scroll() {
+                if(window.pageYOffset !== undefined){
+                    return{
+                        left:window.pageXOffset,
+                        top:window.pageYOffset
+                    }
+                }
+                else if(document.compatMode === "CSS1Compat"){
+                    return{
+                        left:document.documentElement.scrollLeft,
+                        top:document.documentElement.scrollTop
+                    }
+                }
+                return{
+                    left:document.body.scrollLeft,
+                    top:document.body.scrollTop
+                }
+            }
+            small.onmouseover=function () {
+                show(mask);
+                show(big);
+            }
+            small.onmouseout=function () {
+                hide(mask);
+                hide(big);
+            }
+            small.onmousemove=function (event) {
+                 event = event||window.event;
+                 var pagex = event.pageX||event.client+scroll().left;
+                 var pagey = event.pageY||event.client+scroll().top;
+
+                 var x = pagex - box.offsetTop- mask.offsetHeight/2;
+                 var y = pagey - box.offsetLeft-mask.offsetWidth/2;
+                 console.log(mask.offsetHeight);
+
+                 if(x<0){
+                     x=0;
+                 }else if(x>small.offsetWidth-mask.offsetWidth){
+                     x=small.offsetWidth-mask.offsetWidth;
+
+                 }
+                if(y<0){
+                    y=0;
+                }else if(y>small.offsetHeight-mask.offsetHeight){
+                y=small.offsetHeight-mask.offsetHeight;
+
+            }
+
+                 mask.style.marginLeft=x + "px";
+                 mask.style.marginTop= y + "px";
+
+
+
+                 var bl =bigImg.offsetWidth/small.offsetWidth;
+                 bigImg.style.marginLeft = -x * bl+"px";
+                 bigImg.style.marginTop = -y * bl+"px";
+            }
+
+        }
+    </script>
+</head>
+<body>
+<div class="box">
+    <div class="small">
+        <img src="001.jpg" alt="woshixiaode">
+        <div class="mask"></div>
+    </div>
+    <div class="big">
+        <img src="0001.jpg" alt="woshidade">
+    </div>
+</div>
+
+</body>
+</html>
