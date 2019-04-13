@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .box{
+        margin-top: 0px;
+        width: 100%;
+        height: 700px;
+        background-color: #00b6f4;
+    }
+    .sun1,.sun2{
+        height: 100px;
+        width: 100px;
+        background:red;
+        border-radius: 50px;
+        position: absolute;
+        margin-top: 100px;
+        margin-left: 50px;
+        z-index: 10;
+    }
+    .sun1{
+        animation:bigger 1s infinite;
+    }
+    .sun2{
+        animation:bigger 1s infinite 0.3s;
+    }
+    .hai1,.hai2{
+        height: 200px;
+        width: 98%;
+        position: absolute;
+        bottom: 30px;
+    }
+    .hai1{
+        animation: bolang 1s infinite;
+    }
+    .hai2{
+        animation: bolang 1s infinite 0.3s;
+    }
+    @keyframes bigger {
+        0% {
+            transform: scale(1);
+            opacity:1;
+        }
+        100%{
+            transform: scale(1.5);
+            opacity:0.5;
+        }
+    }
+    @keyframes bolang {
+        from{
+            bottom: 30px;
+            opacity:0.4;
+        }
+        to{
+            bottom: 40px;
+            opacity:0.5;
+        }
+
+    }
+    span{
+        margin-left: 400px;
+        margin-top: 400px;
+        display: inline-block;
+    }
+</style>
+<body>
+     <div class="box">
+      <div class="sun1"></div>
+      <div class="sun2"></div>
+         <br/>
+         <span>我也不知道为啥这么丑，难受</span>
+      <div class="hai1"><img src="1.png" alt=""></div>
+      <div class="hai2"><img src="2.png" alt=""></div>
+     </div>
+</body>
+</html>
